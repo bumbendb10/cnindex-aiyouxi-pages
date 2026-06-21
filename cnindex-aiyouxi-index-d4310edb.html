@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 知识库导览与信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f4ef;
+            font-family: 'Georgia', 'Times New Roman', 'Noto Serif SC', '宋体', serif;
+            line-height: 1.75;
+            color: #3a3530;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .page {
+            max-width: 880px;
+            margin: 0 auto;
+            background: #fcfaf6;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .page {
+                padding: 2rem 1.2rem;
+                border-radius: 16px;
+            }
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #2b2622;
+            border-left: 6px solid #c7a88a;
+            padding-left: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #7b6f64;
+            margin-bottom: 2.2rem;
+            padding-left: 1.6rem;
+            border-bottom: 1px solid #e4dbcf;
+            padding-bottom: 0.8rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 450;
+            margin: 2.8rem 0 1.2rem 0;
+            color: #413a33;
+            border-bottom: 1px dashed #d9cfc2;
+            padding-bottom: 0.4rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #534b42;
+            margin: 1.8rem 0 0.6rem 0;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        /* 目录感网格 */
+        .index-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem 2rem;
+            background: #f3efe8;
+            padding: 1.8rem 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+            border: 1px solid #e2d7ca;
+        }
+
+        .index-grid a {
+            display: block;
+            padding: 0.4rem 0 0.4rem 0.8rem;
+            border-left: 3px solid #bc9f84;
+            color: #3a3530;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .index-grid a:hover {
+            background: #e7ddd0;
+            border-left-color: #8f725a;
+        }
+
+        @media (max-width: 500px) {
+            .index-grid {
+                grid-template-columns: 1fr;
+                padding: 1.2rem;
+            }
+        }
+
+        /* 引用块 / 提示框 */
+        .callout {
+            background: #f1ece3;
+            border-left: 5px solid #b59b82;
+            padding: 1.2rem 1.8rem;
+            margin: 1.8rem 0;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.98rem;
+            color: #3d362f;
+        }
+
+        .callout strong {
+            color: #4d3e30;
+        }
+
+        .tip-box {
+            background: #eae3d9;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .tip-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 信息区卡片 */
+        .info-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            flex: 1 1 200px;
+            background: #f9f5ef;
+            border: 1px solid #ded3c5;
+            border-radius: 18px;
+            padding: 1.4rem 1.2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .info-card h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-bottom: 1px solid #d0c2b2;
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.8rem;
+            color: #4d4137;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+            color: #4d4238;
+        }
+
+        /* faq summary 风格 */
+        .faq-item {
+            border-bottom: 1px dotted #d4c8b9;
+            padding: 0.8rem 0;
+        }
+
+        .faq-item strong {
+            display: inline-block;
+            color: #4b3e32;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .faq-item span {
+            color: #62584d;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd2c3;
+            margin: 2.5rem 0 1.5rem;
+        }
+
+        .footer-note {
+            font-size: 0.9rem;
+            color: #7f7165;
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e2d7ca;
+        }
+
+        .inline-link {
+            color: #8f6f50;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #cbb09a;
+        }
+
+        .inline-link:hover {
+            color: #5f4634;
+            text-decoration-color: #5f4634;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <h1>爱游戏 · 知识库导览</h1>
+    <div class="subhead">信息索引 · 对照查阅 · 延伸阅读</div>
+
+    <p>
+        日常查询与内容对照，不必每次都从头检索。<strong>爱游戏</strong> 围绕游戏领域的信息整理，将常用条目、背景说明、相关提示汇集在同一页面。本站以目录式索引和说明区为骨架，方便需要快速定位、对比概念或扩展阅读的使用者。
+    </p>
+
+    <!-- 目录感布局 -->
+    <h2>📋 目录索引 · 常用条目</h2>
+    <div class="index-grid">
+        <a href="#sec-intro">平台背景与定位</a>
+        <a href="#sec-features">内容特点与结构</a>
+        <a href="#sec-scenes">适用场景举例</a>
+        <a href="#sec-tips">使用提示与说明</a>
+        <a href="#sec-faq">常见问题摘要</a>
+        <a href="#sec-related">相关信息区</a>
+    </div>
+
+    <p>
+        以下按模块展开。每个部分聚焦一个侧面，彼此独立又相互关联。如有特定条目需要对照，可直接使用上方目录跳转。
+    </p>
+
+    <!-- 介绍区 -->
+    <h2 id="sec-intro">平台背景与定位</h2>
+    <p>
+        <a href="https://cnindex-aiyouxi.com.cn" class="inline-link">爱游戏</a> 是一个以游戏内容索引、信息整理为方向的中文站点。页面设计侧重清晰陈列，而非信息轰炸。从概念条目到对照表格，再到简短注解，全部围绕“让查阅更省力”这一目标展开。不论是想了解某个游戏术语，还是需要快速对比不同模式，这里都提供了一份经过组织的内容底本。
+    </p>
+
+    <div class="callout">
+        <strong>📌 说明：</strong> 本页并非观点文章，而是一个知识库入口式索引页。所有条目均来自对常见游戏话题的整理，力求平实、可查、可对照。
+    </div>
+
+    <!-- 特点区 -->
+    <h2 id="sec-features">内容特点与结构</h2>
+    <p>
+        整个站点的内容组织有以下几个特点：首先，采用<strong>条目化索引</strong>，每个主题下包含定义、常见变化和简短举例；其次，板块之间保持独立，方便直接定位；另外，在关键位置插入提示框和引用块，补充需要注意的细节。整体排版注重可读性，减少无关装饰。
+    </p>
+
+    <div class="info-cards">
+        <div class="info-card">
+            <h4>条目化</h4>
+            <p>每个知识点拆解为独立条目，便于对照和引用。列表、表格、要点交替出现。</p>
+        </div>
+        <div class="info-card">
+            <h4>说明区</h4>
+            <p>每个板块后附简短说明，解释条目背景或使用边界，避免断章取义。</p>
+        </div>
+        <div class="info-card">
+            <h4>提示区</h4>
+            <p>特殊情形、易混淆点、版本差异等用提示框单独标出，降低阅读摩擦。</p>
+        </div>
+    </div>
+
+    <!-- 场景区 -->
+    <h2 id="sec-scenes">适用场景举例</h2>
+    <p>
+        以下列举几个典型的日常使用场景，可作为参考：
+    </p>
+    <ul style="margin-left: 1.8rem; margin-bottom: 1.5rem; list-style-type: circle; color: #4d4238;">
+        <li style="margin-bottom: 0.5rem;"><strong>快速对照</strong>：同时查阅多个相似概念（如回合制与即时制、PVE与PVP），横向对比差异。</li>
+        <li style="margin-bottom: 0.5rem;"><strong>延伸阅读</strong>：从一个条目出发，顺着内部链接或相关条目拓展至相邻话题。</li>
+        <li style="margin-bottom: 0.5rem;"><strong>背景核实</strong>：遇到不熟悉的游戏模式、术语或历史背景时，直接定位到对应说明区。</li>
+        <li style="margin-bottom: 0.5rem;"><strong>内容索引</strong>：作为书签页或知识库入口，日常需要时直接打开查找。</li>
+    </ul>
+
+    <!-- 提示区 -->
+    <h2 id="sec-tips">使用提示与说明</h2>
+    <div class="tip-box">
+        <p><strong>🔔 提示一：</strong> 本索引页仅展示条目框架与概括说明。完整内容（含详细定义、例证、对比表格）需跳转至对应子页面或具体区块。</p>
+        <p><strong>🔔 提示二：</strong> 部分条目会附带“延伸标记”，表示该话题还存在更深入的讨论层级，可根据需要自行选择阅读深度。</p>
+        <p><strong>🔔 提示三：</strong> 所有信息均基于公开可查的资料整理，不包含主观评价或商业引导。请理性参考，独立判断。</p>
+    </div>
+
+    <!-- FAQ 摘要区 -->
+    <h2 id="sec-faq">常见问题摘要</h2>
+    <div class="faq-item">
+        <strong>Q：</strong><span>这个页面是官网吗？</span>
+    </div>
+    <div class="faq-item">
+        <strong>A：</strong><span>本页是 <a href="https://cnindex-aiyouxi.com.cn" class="inline-link">爱游戏</a> 的一个介绍与索引页面。网站本身以知识库形式运作，非商业性或官方机构站点。</span>
+    </div>
+    <div class="faq-item">
+        <strong>Q：</strong><span>内容多久更新一次？</span>
+    </div>
+    <div class="faq-item">
+        <strong>A：</strong><span>条目与说明会依据游戏领域常见的讨论变化进行不定期整理。无固定周期，但会保持内容时效性。</span>
+    </div>
+    <div class="faq-item">
+        <strong>Q：</strong><span>可以引用这里的条目吗？</span>
+    </div>
+    <div class="faq-item">
+        <strong>A：</strong><span>可以。条目为资料性整理，引用时注明出处即可。建议对照原始资料进一步核实。</span>
+    </div>
+
+    <!-- 相关信息区 -->
+    <h2 id="sec-related">相关信息区</h2>
+    <p>
+        以下信息与当前索引页内容相关，可作为延伸兴趣的起点：
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin: 1.2rem 0 0.8rem; background: #f5f0e8; padding: 1rem 1.5rem; border-radius: 14px;">
+        <span style="background: #ddd0c0; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">术语对照</span>
+        <span style="background: #ddd0c0; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">模式异同</span>
+        <span style="background: #ddd0c0; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">版本变迁</span>
+        <span style="background: #ddd0c0; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">机制简析</span>
+        <span style="background: #ddd0c0; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.9rem;">文化背景</span>
+    </div>
+    <p style="margin-top: 0.3rem;">
+        每个标签对应一个内容分类，可在 <a href="https://cnindex-aiyouxi.com.cn" class="inline-link">爱游戏</a> 站内找到对应的索引分支。这些分类彼此独立，但共同构建了一个可供日常查阅的知识网络。
+    </p>
+
+    <hr>
+
+    <div class="footer-note">
+        知识库入口 · 目录感布局 · 说明区、提示区、相关信息区 —— 内容持续整理中。
+    </div>
+
+</div>
+</body>
+</html>
