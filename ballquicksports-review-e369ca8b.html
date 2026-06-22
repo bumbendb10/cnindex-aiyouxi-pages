@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>球速体育 · 简明指南</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #eef5f4;
+      color: #1a2f2c;
+      line-height: 1.6;
+      padding: 24px 16px;
+    }
+    .page {
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    /* 蓝绿色点缀 */
+    .accent { color: #1b7f75; }
+
+    /* hero 横幅 */
+    .hero {
+      background: linear-gradient(145deg, #1f5f58 0%, #2e8880 100%);
+      color: #f0faf9;
+      padding: 56px 28px 48px;
+      border-radius: 32px;
+      margin-bottom: 40px;
+      box-shadow: 0 12px 24px -10px rgba(26, 47, 44, 0.2);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 580px;
+      opacity: 0.88;
+      line-height: 1.5;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      padding: 4px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      margin-top: 20px;
+    }
+
+    /* 网格卡片系统 */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin: 36px 0;
+    }
+    @media (min-width: 640px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 28px 22px;
+      box-shadow: 0 4px 12px rgba(0, 30, 28, 0.04);
+      transition: transform 0.1s ease, box-shadow 0.15s ease;
+      border: 1px solid #d9e7e4;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 22px -8px rgba(24, 70, 64, 0.12);
+    }
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+      border-left: 4px solid #1b7f75;
+      padding-left: 14px;
+    }
+    .card p {
+      font-size: 0.98rem;
+      color: #2b423e;
+    }
+
+    /* 背景说明块 (杂志风格) */
+    .context-block {
+      background: #f4fbfa;
+      padding: 32px 28px;
+      border-radius: 32px;
+      margin: 36px 0 28px;
+      border: 1px solid #cde0dc;
+    }
+    .context-block h2 {
+      font-weight: 450;
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+      color: #16635a;
+    }
+    .context-block p {
+      max-width: 780px;
+      margin-bottom: 12px;
+    }
+
+    /* 内嵌链接样式 */
+    a {
+      color: #1b7f75;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    a:hover {
+      border-bottom-color: #1b7f75;
+    }
+
+    /* FAQ 摘要风格 */
+    .faq-mini {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 32px 0 28px;
+    }
+    .faq-item {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      border-left: 6px solid #1b7f75;
+    }
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+      color: #124a43;
+    }
+    .faq-item p {
+      font-size: 0.95rem;
+      color: #364f4a;
+    }
+
+    /* 页尾提示 */
+    .footer-note {
+      margin-top: 50px;
+      padding: 28px 0 16px;
+      border-top: 1px solid #c7dbd7;
+      text-align: center;
+      font-size: 0.92rem;
+      color: #3c605a;
+    }
+    .footer-note a {
+      font-weight: 500;
+    }
+
+    /* 小间距及辅助 */
+    .mt-2 { margin-top: 16px; }
+    .tagline {
+      font-size: 0.9rem;
+      background: #dff0ec;
+      display: inline-block;
+      padding: 4px 18px;
+      border-radius: 30px;
+    }
+
+    /* 移动端调整 */
+    @media (max-width: 480px) {
+      .hero { padding: 36px 20px; border-radius: 24px; }
+      .card { padding: 22px 18px; }
+      .context-block { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 杂志横幅 -->
+  <div class="hero">
+    <h1>球速体育 · 简明指南</h1>
+    <p>从熟悉界面到快速获取比赛动态，一份认真整理的说明页，帮助你更顺畅地使用平台。</p>
+    <div class="badge">🟢 实时 · 赛事 · 资讯</div>
+  </div>
+
+  <!-- 背景说明：为什么要看这个页面 -->
+  <div class="context-block">
+    <h2>为什么需要一份“访问提醒”</h2>
+    <p>许多用户第一次访问体育类站点时，会面对大量信息流、导航菜单和实时比分模块。这个页面拆解了 <a href="https://ballquicksports.com">球速体育</a> 的核心交互逻辑，并标注一些实用细节，方便你快速定位常用功能。</p>
+    <p>无论你是关注联赛积分、赛程日历，还是想浏览深度数据，下面的卡片和摘要都能帮你节省摸索时间。</p>
+  </div>
+
+  <!-- 三段自然介绍 / 网格卡片 -->
+  <div class="grid">
+    <div class="card">
+      <h3>📋 赛事索引</h3>
+      <p>按日期、联赛、热门比赛分类浏览。首页顶部提供筛选条，可快速切换进行中的赛事。建议先收藏常用联赛，下次访问更直接。</p>
+    </div>
+    <div class="card">
+      <h3>⏱️ 实时动态</h3>
+      <p>比赛进行时，页面会高亮关键事件：进球、红黄牌、换人。你可以随时点击比赛卡片展开详细统计，无需刷新页面。</p>
+    </div>
+    <div class="card">
+      <h3>📊 数据面板</h3>
+      <p>每场比赛下方都集成控球率、射门、角球等核心数据。数据更新频率与官方信号同步，适合习惯看数值变化的用户。</p>
+    </div>
+  </div>
+
+  <!-- 场景 + 额外介绍（第三个自然块） -->
+  <div style="background: #ffffff; border-radius: 28px; padding: 24px 28px; margin: 20px 0; border: 1px solid #d2e3df;">
+    <h3 style="font-weight: 500; margin-bottom: 12px; color: #16635a;">🧭 三个常用场景</h3>
+    <p><strong>赛前预览：</strong> 查看未来24小时赛程，点击心仪比赛可设置提醒（部分浏览器支持通知）。<br>
+    <strong>赛中追踪：</strong> 保持页面打开或使用移动端浏览器标签，比分和关键事件自动刷新。<br>
+    <strong>赛后回顾：</strong> 比赛结束后数据面板保留48小时，便于复盘或查看细节。</p>
+    <p style="margin-top: 14px;">若想体验完整功能，可直接访问 <a href="https://ballquicksports.com">球速体育</a> 了解更多赛事覆盖范围。</p>
+  </div>
+
+  <!-- FAQ 摘要形式 (杂志风格) -->
+  <div class="faq-mini">
+    <div class="faq-item">
+      <strong>▸ 页面加载后看不到比赛列表？</strong>
+      <p>请检查浏览器定位权限是否被阻止（部分版本会根据IP推荐联赛）。也可以手动切换顶部区域选项卡。</p>
+    </div>
+    <div class="faq-item">
+      <strong>▸ 数据更新频率是多久？</strong>
+      <p>核心比赛事件为实时推送，统计数字通常延迟5–15秒。所有时间以官方信号为准。</p>
+    </div>
+    <div class="faq-item">
+      <strong>▸ 移动端布局是否适配？</strong>
+      <p>是的。站点采用响应式设计，在手机浏览器上卡片会自动堆叠，按钮和筛选器尺寸也会调整，方便单手操作。</p>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="footer-note">
+    <p>本页为访问前参考说明，所有信息均基于 <a href="https://ballquicksports.com">球速体育</a> 公开界面整理。内容保持客观，不构成任何承诺或保证。</p>
+    <p style="margin-top: 8px; opacity: 0.75;">— 2025 · 简明指南 —</p>
+  </div>
+
+</div>
+</body>
+</html>
